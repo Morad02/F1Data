@@ -2,7 +2,8 @@
 
 ## Problema
 
-Una escudería de fórmula 1 tarda mucho en recolectar los datos sobre las otras escuderías y pilotos para analizarlos, compararlos y realizar algunas predicciones.
+Un cinéfilo ha visito muchas peliculas y cada vez le está constando encontrar películas de su agrado o parecidas a las que ya ha visto con anterioridad.
+Además muchas veces cree que no ha visto una película y al verla se da cuenta que ya la ha visto.
 
 [Configuración GIT](./doc/git.png)
 <br>
