@@ -2,8 +2,7 @@
 
 ## Problema
 
-Un cinéfilo ha visito muchas peliculas y cada vez le está constando encontrar películas de su agrado o parecidas a las que ya ha visto con anterioridad.
-Además muchas veces cree que no ha visto una película y al verla se da cuenta que ya la ha visto.
+En la mayoría de las empresas los empleados han de presentar informes de gastos que realizaron durante actividades relacionadas con el trabajo. La creación manual de estos informes suele ser tidiosa y muchas veces conlleva errores. Además, muchas veces los empleados incluyen gastos que la empresa no cubre. 
 
 [Configuración GIT](./doc/git.png)
 <br>
