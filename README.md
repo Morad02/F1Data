@@ -10,8 +10,6 @@ Una empresa dispone de una flota de vehículos, donde cada vehículo se caracter
 <br>
 [Milestones](./docs/milestones.md)
 <br>
-[Personas](./docs/personas.md)
-<br>
 [Configuración GIT](./docs/git.png)
 <br>
 [Configuración SSH](./docs/ssh.png)
