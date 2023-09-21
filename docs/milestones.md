@@ -1,13 +1,21 @@
 # Milestones
 
-[M0] Estructura de datos que permita la gestión de vehículos, materia prima, almacén y pedidos
-- Esta estructura contendrá información detallada para cada elemento y definirá cómo se relacionan entre sí.
+[M0] **Diseño de la estructura de datos**
+- *Objetivo:* Definir una estructura de datos que permita la gestión de vehículos, materia prima, almacén y pedidos, y establecer relaciones entre ellos
+- *Entregable:* Diagrama entidad-relación
+- *Viabilidad:* Establece la base del sistema. Sin esta estructura, no se podría desarrollar las funcionalidades pedidas.
 
-[M1] Métodos para gestionar vehículos, materia prima, almacén y pedidos.
-- Los métodos permitirán crear, editar, eliminar y consultar estos elementos.
+[M1] **Clases de gestión**
+- *Objetivo:* Desarrollar clases que permitan la creación, edición, eliminación y consulta de vehículos, materia prima, almacén y pedidos.
+- *Entregable:* Código fuente de las clases.
+- *Viabilidad:* Proporciona las clases esenciales para gestionar los elementos del sistema. Lo que permitirá la manipulación de los datos anteriores.
 
-[M2] Funcionalidad para asignar vehículos a un pedido minimizando el número de vehículos.
- - El algoritmo se integrará en el sistema y tomará en cuenta datos como la capacidad de los vehículos y el volumen de las materias pedidas para minimizar el número de vehículos utilizados.
+[M2] **Funcionalidad de asignación de vehículos (Minimizando el número de vehículos)**
+- *Objetivo:* Integrar un algoritmo que asigne vehículos a pedidos minimizando el número de vehículos utilizados.
+- *Entregable:* Código del algoritmo.
+- *Viabilidad:* Aborda un problema específico al integrar un algoritmo que minimizará el número de vehículos utilizados haciendo uso de la estructura y las clases definidas anteriormente.
 
-[M3] Funcionalidad para asignar vehículos a un pedido minimizando el consumo de combustible.
-- El algoritmo se integrará en el sistema y tomará en cuenta datos como el consumo (l/km), capacidad de los vehículos y el volumen de las materias pedidas para minimizar el consumo de combustible
+[M3] **Funcionalidad de asignación de vehículos (Minimizando el consumo de combustible)**
+- *Objetivo:* Integrar un algoritmo que asigne vehículos a pedidos minimizando el consumo de combustible.
+- *Entregable:* Código del algoritmo
+- *Viabilidad:* Aborda un problema específico al integrar un algoritmo que minimizará el consumo de combustible haciendo uso de la estructura y las clases definidas anteriormente.
