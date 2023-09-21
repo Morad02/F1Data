@@ -6,13 +6,13 @@ Una empresa dispone de una flota de vehículos, donde cada vehículo se caracter
 
 ## Documentación
 
-[Historias de usuario](./doc/historiasUsuario.md)
+[Historias de usuario](./docs/historiasUsuario.md)
 <br>
-[Milestones](./doc/milestones.md)
+[Milestones](./docs/milestones.md)
 <br>
-[Personas](./doc/personas.md)
+[Personas](./docs/personas.md)
 <br>
-[Configuración GIT](./doc/git.png)
+[Configuración GIT](./docs/git.png)
 <br>
-[Configuración SSH](./doc/ssh.png)
+[Configuración SSH](./docs/ssh.png)
 
