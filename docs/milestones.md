@@ -1,4 +1,4 @@
-# Milstones
+# Milestones
 
 [M0] Diseñar y implementar estructuras de datos para definir:
 - Vehículos
