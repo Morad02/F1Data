@@ -1,19 +1,15 @@
-import { pedido } from "./pedido";
+import { Pedido } from "./pedido";
 
-export class vehiculo{
+export class Vehiculo{
     private _matricula: string;
-    private _pedidos: pedido[];
     private _consumo: number;
     private _pesoMax: number;
     private _volumeMax: number;
-    private _disponibilidad: boolean;
 
-    constructor(matricula: string, pedidos: pedido[], consumo: number, pesoMax: number, volumeMax: number, disponibilidad: boolean){
+    constructor(matricula: string, pedidos: Pedido[], consumo: number, pesoMax: number, volumeMax: number){
         this._matricula = matricula;
-        this._pedidos = pedidos;
         this._consumo = consumo;
         this._pesoMax = pesoMax;
         this._volumeMax = volumeMax;
-        this._disponibilidad = disponibilidad;
     }
 }
