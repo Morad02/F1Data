@@ -1,12 +1,10 @@
-import { materia_prima } from "./materiaPrima";
+import { Lote } from "./materia_prima";
 
-export class pedido{
-    private _id: string;
-    private _materiasPrima: materia_prima[];
+export class Pedido{
+    private _materiasPrima: Lote[];
     private _asignado: boolean;
 
-    constructor(id: string, materiasPrima: materia_prima[], asignado: boolean){
-        this._id = id;
+    constructor(id: string, materiasPrima: Lote[], asignado: boolean){
         this._materiasPrima = materiasPrima;
         this._asignado = asignado;
     }
