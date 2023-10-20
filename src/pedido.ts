@@ -1,32 +1,13 @@
-import { materiaPrima } from "./materiaPrima";
+import { materia_prima } from "./materiaPrima";
 
 export class pedido{
     private _id: string;
-    private _materiasPrima: materiaPrima[];
+    private _materiasPrima: materia_prima[];
+    private _asignado: boolean;
 
-    constructor(id: string, materiasPrima: materiaPrima[]){
+    constructor(id: string, materiasPrima: materia_prima[], asignado: boolean){
         this._id = id;
         this._materiasPrima = materiasPrima;
+        this._asignado = asignado;
     }
-
-    getId(): string{
-        return this._id;
-    }
-
-    getMateriasPrima(): materiaPrima[]{
-        return this._materiasPrima;
-    }
-
-    public calcularPesoTotal(): number{
-        let pesoTotal: number = 0;
-        // TO DO
-        return pesoTotal;
-    }
-
-    public calcularVolumeTotal(): number{
-        let volumeTotal: number = 0;
-        // TO DO
-        return volumeTotal;
-    }
-
 }

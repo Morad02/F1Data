@@ -1,5 +1,5 @@
 
-export class materiaPrima{
+export class materia_prima{
     private _nombre: string;
     private _peso: number;
     private _volume: number;
@@ -8,10 +8,6 @@ export class materiaPrima{
         this._nombre = nombre;
         this._peso = peso;
         this._volume = volume;
-    }
-
-    getNombre(): string{
-        return this._nombre;
     }
 
     getPeso(): number{
