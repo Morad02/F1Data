@@ -1,2 +1,2 @@
 lenguaje: TypeScript
-entidad: src/vehiculo_libre.ts
+entidad: src/gestor_vehiculos.ts
