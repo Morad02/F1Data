@@ -1,11 +1,9 @@
 import { Lote } from "./lote";
 
 export class Pedido{
-    private _lote: Lote[];
-    private _asignado: boolean;
+    private _lotes: Lote[];
 
-    constructor(id: string, lote: Lote[], asignado: boolean){
-        this._lote = lote;
-        this._asignado = asignado;
+    constructor(lotes: Lote[]){
+        this._lotes = lotes;
     }
 }
