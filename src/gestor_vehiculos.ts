@@ -7,6 +7,6 @@ class GestosVehiculos{
     private _vehiculos: VehiculoDetalle[];
 
     constructor(vehiculos: VehiculoDetalle[]){
-        this._vehiculos = vehiculos;
+        this._vehiculos = vehiculos.map((vehiculo: VehiculoDetalle) => [vehiculo[0], [], true]);
     }
 }
