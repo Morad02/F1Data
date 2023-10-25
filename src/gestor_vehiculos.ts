@@ -3,7 +3,7 @@ import { Pedido } from "./pedido";
 
 type VehiculoDetalle = [Vehiculo, Pedido[], boolean];
 
-class GestosVehiculos{
+class GestorVehiculos{
     private _vehiculos: VehiculoDetalle[];
 
     constructor(vehiculos: VehiculoDetalle[]){
