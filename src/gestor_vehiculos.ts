@@ -1,16 +1,15 @@
 import { Vehiculo } from "./vehiculo";
-import { Pedido } from "./pedido";
-import { Lote } from "./lote";
+import { VehiculoAsignado } from "./vehiculo_asignado";
+
 
 class GestorVehiculos{
-    private __vehiculoPedido = new Map<Vehiculo, Pedido[]>();
-    private __vehiculoDisponible = new Map<Vehiculo, boolean>();
-    private __vehiculoLote = new Map<Vehiculo, Lote[]>();
+    
+    private _vehiculosDisponibles: Vehiculo[];
+    private _vehiculosAsignados: VehiculoAsignado[];
 
-    constructor(vehiculos: Vehiculo[]){
-        vehiculos.forEach(vehiculo => {
-            this.__vehiculoPedido.set(vehiculo, []);
-            this.__vehiculoDisponible.set(vehiculo, true);
-        });
+    constructor(vehiculosDisponibles: Vehiculo[]){
+        this._vehiculosDisponibles = vehiculosDisponibles;
+        this._vehiculosAsignados = [];
     }
+
 }
