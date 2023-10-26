@@ -7,8 +7,8 @@ class GestorVehiculos{
     private _vehiculosDisponibles: Vehiculo[];
     private _vehiculosAsignados: VehiculoAsignado[];
 
-    constructor(vehiculosDisponibles: Vehiculo[]){
-        this._vehiculosDisponibles = vehiculosDisponibles;
+    constructor(vehiculos: Vehiculo[]){
+        this._vehiculosDisponibles = vehiculos;
         this._vehiculosAsignados = [];
     }
 
