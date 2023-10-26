@@ -12,18 +12,10 @@ export class Pedido{
     }
 
     private calcularPesoTotal(): number{
-        let pesoTotal: number = 0;
-        this._lotes.forEach(lote => {
-            pesoTotal += lote.peso;
-        });
-        return pesoTotal;
+        return 0;
     }
 
     private calcularVolumenTotal(): number{
-        let volumenTotal: number = 0;
-        this._lotes.forEach(lote => {
-            volumenTotal += lote.volumen;
-        });
-        return volumenTotal;
+        return 0;
     }
 }
