@@ -1,5 +1,5 @@
-import { Vehiculo } from "./vehiculo";
-import { VehiculoAsignado } from "./vehiculo_asignado";
+import { Vehiculo } from "./vehiculo.ts";
+import { VehiculoAsignado } from "./vehiculo_asignado.ts";
 
 
 class GestorVehiculos{

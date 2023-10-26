@@ -1,5 +1,5 @@
-import { Vehiculo } from "./vehiculo";
-import { Lote } from "./lote";
+import { Vehiculo } from "./vehiculo.ts";
+import { Lote } from "./lote.ts";
 
 export class VehiculoAsignado{
     private _vehiculo: Vehiculo;

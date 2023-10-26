@@ -1,0 +1,16 @@
+
+{
+    "tasks": {
+        "check": "deno lint"
+    },
+    "lint": {
+        "include": ["src/"],
+        "rules": {
+            "tags": ["recommended"],
+            "include": ["ban-untagged-todo"],
+            "exclude": ["no-unused-vars"]
+          }
+    }
+
+    
+}

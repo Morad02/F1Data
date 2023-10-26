@@ -1,4 +1,4 @@
-import { Lote } from "./lote";
+import { Lote } from "./lote.ts";
 
 export class Pedido{
     private _lotes: Lote[];
