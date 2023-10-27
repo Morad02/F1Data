@@ -1,7 +1,7 @@
 
 {
     "tasks": {
-        "check": "deno lint"
+        "check": "deno check --all src/gestor_vehiculos.ts "
     },
     "lint": {
         "include": ["src/"],
@@ -11,6 +11,5 @@
             "exclude": ["no-unused-vars"]
           }
     }
-
     
 }
