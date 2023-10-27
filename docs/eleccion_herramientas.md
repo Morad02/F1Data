@@ -6,7 +6,7 @@ El runtime elegido ya proporciona una forma de gestionar las dependencias. Deno 
 
 # Elección de task runner
 
-Usar un gestor de tareas en nuestro proyecto nos ayudará a automatizar tareas repetitivas, ahorrar tiempo,y evitar errores Simplifica el proceso y garantiza una ejecución consistente. Para elegir el task runner del proyecto vamos a descubrir las características más importantes de los siguientes gestores de tareas y en base a estas características y criterios de decisión establecidos elegiremos el más razonable. Los task runner que vamos a comparar son los siguientes: *make*, *drake*, *Denosk* y el ofrecido por *Deno*.
+Usar un gestor de tareas en nuestro proyecto nos ayudará a automatizar tareas repetitivas, ahorrar tiempo,y evitar errores Simplifica el proceso y garantiza una ejecución consistente. Para elegir el task runner del proyecto vamos a descubrir las características más importantes de los siguientes gestores de tareas y en base a estas características y criterios de decisión establecidos elegiremos el más razonable. Los task runner que vamos a comparar son los siguientes: *Make*, *Drake*, *Denosk* y el ofrecido por *Deno*.
 
 ## Make
 
