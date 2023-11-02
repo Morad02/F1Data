@@ -3,7 +3,7 @@ import { Vehiculo } from "./vehiculo.ts";
 import { VehiculoAsignado } from "./vehiculo_asignado.ts";
 
 
-class GestorVehiculos{
+export class GestorVehiculos{
     
     private _vehiculosDisponibles: Vehiculo[];
     private _vehiculosAsignados: VehiculoAsignado[];
@@ -17,5 +17,11 @@ class GestorVehiculos{
     asignarPedido(pedido:Pedido): void {
         
     }
+
+    get vehiculosAsignados(): VehiculoAsignado[] {
+        return [...this._vehiculosAsignados];
+    }
+
+
 
 }
