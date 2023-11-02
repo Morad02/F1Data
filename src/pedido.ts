@@ -18,4 +18,9 @@ export class Pedido{
     private calcularVolumenTotal(): number{
         return 0;
     }
+
+    get lotes():Lote[]
+    {
+        return [...this._lotes]
+    }
 }
