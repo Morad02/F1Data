@@ -17,7 +17,7 @@ deno task check
 Para testear la asignación de vehículos se ha de usar el siguiente comando
 
 ```bash
-deno test
+deno task test
 ```
 
 ## Documentación

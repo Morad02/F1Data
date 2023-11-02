@@ -1,7 +1,8 @@
 
 {
     "tasks": {
-        "check": "deno check --all src/gestor_vehiculos.ts "
+        "check": "deno check --all src/gestor_vehiculos.ts ",
+        "test": "deno test"
     },
     "lint": {
         "include": ["src/"],
