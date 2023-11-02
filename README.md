@@ -13,6 +13,13 @@ Para comprobar la sintaxis de esta entidad y de las demás fuentes debemos de ej
 ```bash
 deno task check
 ```
+
+Para testear la asignación de vehículos se ha de usar el siguiente comando
+
+```bash
+deno test
+```
+
 ## Documentación
 
 [Historias de usuario](./docs/historiasUsuario.md)
@@ -30,5 +37,7 @@ deno task check
 [Elección gestor de dependencias](./docs/eleccion_herramientas.md#Elección-gestor-de-dependencias)
 <br>
 [Elección de task runner](./docs/eleccion_herramientas.md#Elección-de-task-runner)
+<br>
+[Elección metodología y herramientas de test](./docs/eleccion_test.md)
 
 

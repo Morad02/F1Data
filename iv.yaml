@@ -2,4 +2,5 @@ lenguaje: TypeScript
 entidad: src/gestor_vehiculos.ts
 automatizar:
   fichero: deno.json
-  orden: deno task 
+  orden: deno task
+test: test/gestor_vehiculos_test.ts
