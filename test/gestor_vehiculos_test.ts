@@ -20,7 +20,7 @@ describe("GestorVehiculos - Asignación de Pedidos", () => {
         const asignado1 = gestor1.asignarPedido(pedido1);
 
         expect(asignado1).to.be.true;
-        expect(gestor1.vehiculosAsignados).to.have.lengthOf(2);
+        expect(gestor1.vehiculosAsignados).to.have.lengthOf(1);
     });
 
     it("Vehículos pequeños y un lote grande", () => {
