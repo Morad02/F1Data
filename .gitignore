@@ -132,6 +132,4 @@ dist
 #VSCode
 .vscode
 
-#
-deno.lock
 
