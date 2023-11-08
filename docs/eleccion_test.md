@@ -14,6 +14,9 @@ Teniendo en cuenta que la metodología a usar es **BDD** y de que se está usand
 - *Aserciones:* [**Assert**](https://deno.land/std@0.204.0/assert/mod.ts) de Deno_std y [**Chai**](https://deno.land/x/chai@v5.0.0)
 - *Test runners o frameworks:* [**Tincan**](https://deno.land/x/tincan@1.0.2), [**Bdd_mocha**](https://deno.land/x/deno_mocha@0.3.1) y [**bdd.ts**](https://deno.land/std@0.204.0/testing/bdd.ts) de Deno_std
 
+
+>Nota : Los criterios de elección que se van a usar para tomar las decisiones son los que se han establecido en el [documento de criterios](./criterios.md).
+
 ### Aserciones
 
 Podríamos usar la propuesta por Deno pero al ser reciente nos vamos a decantar por *Chai* ya que ya lleva varios años en el mercado y es más estable, por lo que generaría menor deuda técnica. 
