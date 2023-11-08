@@ -10,6 +10,8 @@ export class GestorVehiculos{
     private _vehiculosAsignados: VehiculoAsignado[];
 
     constructor(vehiculos: Vehiculo[]){
+        //mantener los vehículos ordenados de mayor a menor peso + volumen
+        vehiculos.sort((a, b) => (b.pesoMax + b.volumeMax) - (a.pesoMax + a.volumeMax));
         this._vehiculosDisponibles = vehiculos;
         this._vehiculosAsignados = [];
     }
