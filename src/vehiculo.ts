@@ -20,8 +20,19 @@ export class Vehiculo{
         return this._volumeMax
     }
 
+    //Comprobamos si el vehículo puede cargar un peso determinado
+    private puedeCargarPeso(peso: number): boolean {
+        return peso <= this._pesoMax;
+    }
+
+    //Comprobamos si el vehículo puede cargar un volumen determinado
+    private puedeCargarVolumen(volume: number): boolean {
+        return volume <= this._volumeMax;
+    }
+
+    //Comprobamos si el vehículo puede cargar un lote determinado
     puedeCargarLote(lote: Lote): boolean {
-        return lote.peso <= this._pesoMax && lote.volume <= this._volumeMax;
+        return this.puedeCargarPeso(lote.peso) && this.puedeCargarVolumen(lote.volume);
     }
 
 }
