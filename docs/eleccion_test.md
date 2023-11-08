@@ -25,7 +25,9 @@ Podríamos usar la propuesta por Deno pero al ser reciente nos vamos a decantar 
 
 Tican tiene pocas funcionalidades (8) que ahora nos podrían valer pero seguramente en un futuro nos harán falta más. El equipo de desarrollo está formado por dos personas y sufre pocas actualizaciones. 
 Bdd_mocha viene a mejorar la velocidad del módulo ofrecido por Deno, es más completa que la anterior pero todavía no ha implementado todas las funcionalidades de *Bdd.ts*.
-Bdd.ts es el módulo ofrecido por Deno. Es parecido a Mocha, Jasmine y Jest. Aunque no lleva mucho tiempo , es muy completo. Al tener el equipo de desarrollo de Deno, vamos a tener mayor suporte que las herramientas anteriores.  Por lo tanto, la herramienta que vamos a elegir es la ofrecida por Deno ya que se adecúa más a nuestros criterios.
+Bdd.ts es el módulo ofrecido por Deno. Es parecido a Mocha, Jasmine y Jest. Aunque no lleva mucho tiempo , es muy completo. Al tener el equipo de desarrollo de Deno, vamos a tener mayor suporte que las herramientas anteriores.
+
+Teniendo en cuenta los criterios de elección, nos vamos a decantar por *Bdd.ts*. No se ha elegido *Tican* porque no tiene suficientes funcionalidades y además se actualiza poco lo que podría generar mayor deuda técnica. En cuanto a *Bdd_mocha*, aunque es más completa que Tican, todavía no ha implementado todas las funcionalidades de Bdd.ts. 
 
 ### CLI para ejecutar los tests
 
