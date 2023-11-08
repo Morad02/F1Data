@@ -20,16 +20,21 @@ export class VehiculoAsignado{
         return this._vehiculo
     }
 
-    
-
-    puedeCargarLote(lote: Lote): boolean {
+    //Comprobamos si el vehículo puede cargar un peso determinado
+    private puedeCargarPeso(peso: number): boolean {
         const pesoCargado = this._lotes.reduce((total, l) => total + l.peso, 0);
-        const volumenCargado = this._lotes.reduce((total, l) => total + l.volume, 0);
+        return pesoCargado + peso <= this._vehiculo.pesoMax;
+    }
 
-        return (
-            pesoCargado + lote.peso <= this._vehiculo.pesoMax &&
-            volumenCargado + lote.volume <= this._vehiculo.volumeMax
-        );
+    //Comprobamos si el vehículo puede cargar un volumen determinado
+    private puedeCargarVolumen(volume: number): boolean {
+        const volumenCargado = this._lotes.reduce((total, l) => total + l.volume, 0);
+        return volumenCargado + volume <= this._vehiculo.volumeMax;
+    }
+
+    //Comprobamos si el vehículo puede cargar un lote determinado
+    puedeCargarLote(lote: Lote): boolean {
+        return this.puedeCargarPeso(lote.peso) && this.puedeCargarVolumen(lote.volume);
     }
 
     
