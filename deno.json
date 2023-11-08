@@ -4,14 +4,6 @@
         "check": "deno check --all src/gestor_vehiculos.ts ",
         "test": "deno test"
     },
-    "lint": {
-        "include": ["src/"],
-        "rules": {
-            "tags": ["recommended"],
-            "include": ["ban-untagged-todo"],
-            "exclude": ["no-unused-vars"]
-          }
-    },
     "imports": {
         "chai": "https://cdn.skypack.dev/chai@4.3.4?dts",
         "bdd": "https://deno.land/std@0.204.0/testing/bdd.ts"
