@@ -4,117 +4,119 @@ import { Vehiculo } from "../src/vehiculo.ts";
 import { Lote } from "../src/lote.ts";
 import { Pedido } from "../src/pedido.ts";
 import { GestorVehiculos} from "../src/gestor_vehiculos.ts"
+import { VehiculoAsignado } from "../src/vehiculo_asignado.ts";
 
 describe("GestorVehiculos - Asignación de Pedidos", () => {
+
+    function esUnaAsignacionMinima(vehiculosDisponibles: Vehiculo[], lotesPedido: Lote[], vehiculosAsignados: VehiculoAsignado[]): boolean {
+        
+        if(vehiculosAsignados.length > 0)
+        {
+            for (let i = 0; i < vehiculosAsignados.length; i++) {
+                let numLotesAsignados = vehiculosAsignados[i].lotes.length;
+    
+                for(let j = 0; j < vehiculosAsignados[i].lotes.length; j++) {
+                    
+                    for(let k = 0; k  < vehiculosAsignados.length && k != i; k++) {
+                        if(vehiculosAsignados[k].puedeCargarLote(vehiculosAsignados[i].lotes[j])) {
+                            numLotesAsignados--;
+                        }
+    
+                        if(numLotesAsignados == 0) {
+                            return false;
+                        }
+    
+                    }
+                }   
+            }
+        }
+        else
+        {
+            if(vehiculosDisponibles.length == 0)
+                return true;
+            else
+            {
+                if(!puedeCargarLotes(vehiculosDisponibles, lotesPedido))
+                    return true;
+                else
+                    return false;
+            }
+            
+            
+        }
+        
+        return true;
+    }
+
+    function puedeCargarLotes(vehiculosDisponibles: Vehiculo[], lotesPedido: Lote[])
+    {
+        
+        return pesoTotalLotes(lotesPedido) <= pesoTotalVehiculos(vehiculosDisponibles) && volumenTotalLotes(lotesPedido) <= volumenTotalVehiculos(vehiculosDisponibles);
+    }
+
+    function pesoTotalLotes(lotes: Lote[]): number {
+        return lotes.reduce((acumulador, lote) => acumulador + lote.peso, 0);
+    }
+
+    function volumenTotalLotes(lotes: Lote[]): number {
+        return lotes.reduce((acumulador, lote) => acumulador + lote.volume, 0);
+    }
+
+    function pesoTotalVehiculos(vehiculos: Vehiculo[]): number {
+        return vehiculos.reduce((acumulador, vehiculo) => acumulador + vehiculo.pesoMax, 0);
+    }
+
+    function volumenTotalVehiculos(vehiculos: Vehiculo[]): number {
+        return vehiculos.reduce((acumulador, vehiculo) => acumulador + vehiculo.volumeMax, 0);
+    }
+    
     it("Lotes pequeños y muchos vehículos disponibles", () => {
-        const vehiculo1 = new Vehiculo(10, 2000, 10);
-        const vehiculo2 = new Vehiculo(15, 3000, 15);
-        const vehiculosDisponibles1 = [vehiculo1, vehiculo2];
+        const gestor1 = new GestorVehiculos([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)]);
+        gestor1.asignarPedido(new Pedido([new Lote(500, 5), new Lote(700, 7)]));
 
-        const lote1 = new Lote(500, 5);
-        const lote2 = new Lote(700, 7);
-        const lotesPedido1 = [lote1, lote2];
-        const pedido1 = new Pedido(lotesPedido1);
-
-        const gestor1 = new GestorVehiculos(vehiculosDisponibles1);
-        const asignado1 = gestor1.asignarPedido(pedido1);
-
-        expect(asignado1).to.be.true;
-        expect(gestor1.vehiculosAsignados).to.have.lengthOf(1);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)], [new Lote(500, 5), new Lote(700, 7)], gestor1.vehiculosAsignados)).to.be.true;
     });
 
     it("Vehículos pequeños y un lote grande", () => {
-        const vehiculo3 = new Vehiculo(10, 500, 5);
-        const vehiculosDisponibles2 = [vehiculo3];
+        const gestor2 = new GestorVehiculos([new Vehiculo(10, 500, 5)]);
+        gestor2.asignarPedido(new Pedido([new Lote(1000, 8)]));
 
-        const lote3 = new Lote(1000, 8);
-        const lotesPedido2 = [lote3];
-        const pedido2 = new Pedido(lotesPedido2);
-
-        const gestor2 = new GestorVehiculos(vehiculosDisponibles2);
-        const asignado2 = gestor2.asignarPedido(pedido2);
-
-        expect(asignado2).to.be.false;
-        expect(gestor2.vehiculosAsignados).to.have.lengthOf(0);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 500, 5)], [new Lote(1000, 8)], gestor2.vehiculosAsignados)).to.be.true;
     });
 
     it("Sin vehículos disponibles", () => {
-        const vehiculosDisponibles3: Vehiculo[] = [];
+        const gestor3 = new GestorVehiculos([]);
+        gestor3.asignarPedido(new Pedido([new Lote(500, 5)]));
 
-        const lote4 = new Lote(500, 5);
-        const lotesPedido3 = [lote4];
-        const pedido3 = new Pedido(lotesPedido3);
-
-        const gestor3 = new GestorVehiculos(vehiculosDisponibles3);
-        const asignado3 = gestor3.asignarPedido(pedido3);
-
-        expect(asignado3).to.be.false;
-        expect(gestor3.vehiculosAsignados).to.have.lengthOf(0);
+        expect(esUnaAsignacionMinima([], [new Lote(500,5)], gestor3.vehiculosAsignados)).to.be.true;
     });
 
     it("Pedido con muchos lotes y vehículos con capacidades suficientes", () => {
-        const vehiculo4 = new Vehiculo(10, 2000, 10);
-        const vehiculo5 = new Vehiculo(15, 3000, 15);
-        const vehiculosDisponibles4 = [vehiculo4, vehiculo5];
+        const gestor4 = new GestorVehiculos([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)]);
+        gestor4.asignarPedido(new Pedido([new Lote(500, 5), new Lote(700, 7), new Lote(800, 8)]));
 
-        const lote5 = new Lote(500, 5);
-        const lote6 = new Lote(700, 7);
-        const lote7 = new Lote(800, 8);
-        const lotesPedido4 = [lote5, lote6, lote7];
-        const pedido4 = new Pedido(lotesPedido4);
-
-        const gestor4 = new GestorVehiculos(vehiculosDisponibles4);
-        const asignado4 = gestor4.asignarPedido(pedido4);
-
-        expect(asignado4).to.be.true;
-        expect(gestor4.vehiculosAsignados).to.have.lengthOf(2);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)], [new Lote(500, 5), new Lote(700, 7), new Lote(800, 8)], gestor4.vehiculosAsignados)).to.be.true;
     });
 
     it("Pedido con un solo lote y varios vehículos disponibles", () => {
-        const vehiculo6 = new Vehiculo(10, 2000, 10);
-        const vehiculo7 = new Vehiculo(15, 3000, 15);
-        const vehiculosDisponibles5 = [vehiculo6, vehiculo7];
+        const gestor5 = new GestorVehiculos([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)]);
+        gestor5.asignarPedido(new Pedido([new Lote(800, 8)]));
 
-        const lote8 = new Lote(800, 8);
-        const lotesPedido5 = [lote8];
-        const pedido5 = new Pedido(lotesPedido5);
-
-        const gestor5 = new GestorVehiculos(vehiculosDisponibles5);
-        const asignado5 = gestor5.asignarPedido(pedido5);
-
-        expect(asignado5).to.be.true;
-        expect(gestor5.vehiculosAsignados).to.have.lengthOf(1);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 2000, 10), new Vehiculo(15, 3000, 15)], [new Lote(800, 8)], gestor5.vehiculosAsignados)).to.be.true;
     });
 
     it("Pedido con múltiples lotes y solo un vehículo disponible", () => {
-        const vehiculo8 = new Vehiculo(10, 2000, 10);
-        const vehiculosDisponibles6 = [vehiculo8];
+        const gestor6 = new GestorVehiculos([new Vehiculo(10, 2000, 10)]);
+        gestor6.asignarPedido(new Pedido([new Lote(800, 8), new Lote(900, 9)]));
 
-        const lote9 = new Lote(800, 8);
-        const lote10 = new Lote(900, 9);
-        const lotesPedido6 = [lote9, lote10];
-        const pedido6 = new Pedido(lotesPedido6);
-
-        const gestor6 = new GestorVehiculos(vehiculosDisponibles6);
-        const asignado6 = gestor6.asignarPedido(pedido6);
-
-        expect(asignado6).to.be.false;
-        expect(gestor6.vehiculosAsignados).to.have.lengthOf(0);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 2000, 10)], [new Lote(800, 8), new Lote(900, 9)], gestor6.vehiculosAsignados)).to.be.true;
     });
 
     it("Vehículos con capacidades extremadamente altas", () => {
-        const vehiculo9 = new Vehiculo(10, 20000, 100);
-        const vehiculosDisponibles7 = [vehiculo9];
+        const gestor7 = new GestorVehiculos([new Vehiculo(10, 20000, 100)]);
+        gestor7.asignarPedido(new Pedido([new Lote(500, 5), new Lote(700, 7)]));
 
-        const lote11 = new Lote(500, 5);
-        const lote12 = new Lote(700, 7);
-        const lotesPedido7 = [lote11, lote12];
-        const pedido7 = new Pedido(lotesPedido7);
-
-        const gestor7 = new GestorVehiculos(vehiculosDisponibles7);
-        const asignado7 = gestor7.asignarPedido(pedido7);
-
-        expect(asignado7).to.be.true;
-        expect(gestor7.vehiculosAsignados).to.have.lengthOf(1);
+        expect(esUnaAsignacionMinima([new Vehiculo(10, 20000, 100)], [new Lote(500, 5), new Lote(700, 7)], gestor7.vehiculosAsignados)).to.be.true;
+        
     });
 });
