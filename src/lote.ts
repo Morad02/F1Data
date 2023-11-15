@@ -7,4 +7,14 @@ export class Lote{
         this._peso = peso;
         this._volume = volume;
     }
+
+    get peso():number
+    {
+        return this._peso
+    }
+
+    get volume():number
+    {
+        return this._volume
+    }
 }
