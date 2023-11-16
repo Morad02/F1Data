@@ -19,6 +19,19 @@ Para testear la asignación de vehículos se ha de usar el siguiente comando
 ```bash
 deno task test
 ```
+## Contenedor de pruebas
+
+Se puede construir la imagen y ejecutar el contenedor con el siguiente comando
+
+```bash
+docker build -t morad02/f1data . & docker run  -tv `pwd`:/app/test morad02/f1data
+```
+
+También tenemos la otra posibilidad de usar la imagen que esta en el [repositorio](https://hub.docker.com/r/morad02/f1data) de dockerhub
+
+```bash
+docker run  -tv `pwd`:/app/test morad02/f1data 
+```
 
 ## Documentación
 
@@ -39,5 +52,7 @@ deno task test
 [Elección de task runner](./docs/eleccion_herramientas.md#Elección-de-task-runner)
 <br>
 [Elección metodología y herramientas de test](./docs/eleccion_test.md)
+<br>
+[Elección imagen base](./docs/eleccion_imagen_base.md)
 
 
