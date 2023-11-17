@@ -32,7 +32,6 @@ También tenemos la otra posibilidad de usar la imagen que esta en el [repositor
 ```bash
 docker run  -tv `pwd`:/app/test morad02/f1data 
 ```
-
 ## Documentación
 
 [Historias de usuario](./docs/historiasUsuario.md)
@@ -56,3 +55,4 @@ docker run  -tv `pwd`:/app/test morad02/f1data
 [Elección imagen base](./docs/eleccion_imagen_base.md)
 
 
+>Nota: se han de cerrar issues ya resueltos con el comando **close** seguido del número de issue en el mensaje de commit
