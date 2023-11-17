@@ -4,8 +4,7 @@ LABEL maintainer="kharraz02@correo.ugr.es"
 
 WORKDIR /app/test
 
-COPY deno.json .
-COPY deno.lock .
+COPY deno.json deno.lock ./
 
 RUN chown -R deno:deno /app
 
