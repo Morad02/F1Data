@@ -1,0 +1,18 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: My automation
+
+agent:
+  machine:
+    os_image: ubuntu2004
+blocks:
+  - name: test
+    run:
+      when: "change_in('/', {exclude: ['/docs', 'README.md'], default_branch: 'main'})"
+    task:
+      jobs:
+        - name: test docker
+          commands:
+            - checkout
+            - docker pull morad02/f1data:latest
+            - docker run -t -v `pwd`:/app/test morad02/f1data:latest
