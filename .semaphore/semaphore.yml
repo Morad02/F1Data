@@ -12,6 +12,4 @@ blocks:
           commands:
             - checkout
             - docker build -t morad02/f1data .
-        - name: Run test
-          commands:
             - 'docker run  -tv `pwd`:/app/test morad02/f1data'
