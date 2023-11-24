@@ -1,0 +1,17 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo "Ejecutando contenedor con la imagen morad02/f1data"
+    docker pull morad02/f1data
+    docker run  -tv `pwd`:/app/test morad02/f1data echo "¡Hola desde el contenedor!"
+  displayName: 'Ejecutar contenedor'
