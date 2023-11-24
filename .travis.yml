@@ -1,0 +1,8 @@
+languaje: bash
+
+services:
+  - docker
+
+script:
+  - docker build -t morad02/f1data $TRAVIS_BUILD_DIR
+  - docker run -tv $TRAVIS_BUILD_DIR:/app/test morad02/f1data
