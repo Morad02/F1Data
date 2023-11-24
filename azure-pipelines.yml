@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo "Ejecutando contenedor con la imagen morad02/f1data"
+  displayName: 'Mensaje inicial'
+
+- script: |
+    docker build -t morad02/f1data .
+  displayName: 'Construir imagen Docker'
+
+- script: |
+    docker run -tv `pwd`:/app/test morad02/f1data
+  displayName: 'Ejecutar contenedor'
+
