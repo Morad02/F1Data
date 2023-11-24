@@ -5,4 +5,4 @@ services:
 
 script:
   - docker build -t morad02/f1data .
-  - docker run -tv `pwd`:/app/test morad02/f1data
+  - docker run -tv $(pwd):/app/test morad02/f1data
