@@ -4,6 +4,17 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
+triggers:
+  - name: Pull Request and Commits
+    event:
+      type: pull_request
+      branch:
+        - '*'
+      paths:
+        include:
+          - src/**
+          - test/**
+          - dockerfile
 blocks:
   - name: Test
     task:
