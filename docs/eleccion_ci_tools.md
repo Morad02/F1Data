@@ -81,3 +81,8 @@ Para mi, ha sido el más fácil de usar. Simplemente se ha usado su interfaz gr�
 
 Para usarlo, simplemente hay que crear un fichero .travis.yml en la raíz del proyecto. En este caso, tras varios intentos no ha sido posible ponerlo en marcha.
 
+# Elección
+
+La CI tool del proyecto será Github Actions, ya que cumple con todos los requisitos establecidos. Las otras herramientas probadas, podríamos quedarnos con todas pero debido a los diferentes problemas que han surgido, solo ha sido posible hacer funcionar Semaphore CI. Como ya tenemos GitHub actions sin restricciones, podemos dejar Semaphore CI durante el periodo de prueba y luego eliminarlo.
+
+>Nota: aunque no se ha comentado todas las herramientas usan checks app de GitHub. Además, su configuración es muy sencilla y se hace desde la interfaz gráfica de cada herramienta que simplemente hay que darle permisos para que pueda acceder a nuestro repositorio con los permisos necesarios.
