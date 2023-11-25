@@ -43,6 +43,19 @@
 
 # Pruebas
 
+## Maneras de probar el código
+
+### Docker
+
+Una posible configuración sería configurar una pipeline para que cuando se de la situación necesaria (push de código, tests, dockerfile, etc) se construya la imagen y se ejecute el contenedor. De esta manera se podría probar el código en un entorno controlado. 
+Siguiendo con Docker, otra posibilidad sería en lugar de construir la imagen, descargarla de DockerHub y ejecutar el contenedor.
+
+### Deno
+
+Otra posibilidad sería ejecutar los tests con deno. Para ello se ha de instalar deno en el agente de la pipeline y ejecutar los tests.
+En este caso hemos de elegir la versión o versiones que queramos testear. 
+
+
 ## Azure pipelines
  
 No ha sido posible hacerlo funcionar. El problema es que azure ha cambiado su política de tiers.
