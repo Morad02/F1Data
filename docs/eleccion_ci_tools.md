@@ -76,3 +76,8 @@ Se ha configurado siguiendo la documentación ofrecida por Deno para [CI](https:
 ## Semaphore CI
 
 Para mi, ha sido el más fácil de usar. Simplemente se ha usado su interfaz gráfica junto con templates para general el pipeline. Tras la generación, te da la opción de verlo en formato yml. En este caso, se ha optado por usar Docker para ejecutar los tests. El inconveniente es que solo tiene una prueba gratuita de 14 días y un tier limitado.
+
+## Travis CI
+
+Para usarlo, simplemente hay que crear un fichero .travis.yml en la raíz del proyecto. En este caso, tras varios intentos no ha sido posible ponerlo en marcha.
+
