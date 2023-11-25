@@ -72,3 +72,7 @@ Aunque ponga que no dispongamos de paralelismo para la ejecución, las tareas se
 ## Github Actions
 
 Se ha configurado siguiendo la documentación ofrecida por Deno para [CI](https://docs.deno.com/runtime/manual/advanced/continuous_integration). En este caso, se ha optado por usar Deno con la versión decidida anteriormente. 
+
+## Semaphore CI
+
+Para mi, ha sido el más fácil de usar. Simplemente se ha usado su interfaz gráfica junto con templates para general el pipeline. Tras la generación, te da la opción de verlo en formato yml. En este caso, se ha optado por usar Docker para ejecutar los tests. El inconveniente es que solo tiene una prueba gratuita de 14 días y un tier limitado.
