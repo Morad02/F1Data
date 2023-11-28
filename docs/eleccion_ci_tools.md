@@ -33,9 +33,11 @@ Siguiendo con Docker, otra posibilidad sería en lugar de construir la imagen, d
 Otra posibilidad sería ejecutar los tests con Deno. Para ello se ha de instalar Deno en el agente de la pipeline y ejecutar los tests.
 En este caso hemos de elegir la versión o versiones que queramos testear. 
 
-### Elección de versión
+### Elección de versiones
 
-En primer lugar, quería probar la versión 3.9 de typescript ya que esta trajo una gran mejora en el rendimiento y menor consumo de memoria y además las funcionalidades que ofrece son suficiente para el proyecto. Para ello, como no puedo elegir explícitamente la versión de typescript en Deno, pues elegí probar la versión 1.0.0 de Deno que usa esta versión de typescript. Pero al usar esta versión obtuve el fallo de que no existe el comando task, porque se introdujo en la versión 1.20. Tras obtener este fallo, he probado a usar la versión 1.20, pero obtuve otro fallo. Y en este caso, es que antiguamente en Deno no se usaban maps en los lockfiles, sino strings. Así que otra vez me tuve que cambiar de versión. Leyendo el release de las versiones, ví que este cambio se introdujo hace poco, por lo que poner esta versión en específico solo para que funcione no tiene sentido. Como ya me he quedado lejos de mi objetivo inicial, creo que la elección más razonable es usar la última versión estable de Deno.Aunque lleva varios años en el mercado, todavía se están produciendo cambios relevantes.
+La imagen de Docker usa como base la imagen proporcionada por deno. Al no especificar la versión de la imagen base, nos usará la imagen con la última versión de Deno.
+Otra versión que se va a testear es la versión 1.36 . Vamos a usar esta versión porque es la mínima necesaria para que nos pueda funcionar. Incluye todas las herramientas
+de Deno que estamos usando. En específico, vamos a probar la versión: 1.36.4 que incluye corrección de algunos fallos. 
 
 # Pruebas
 
