@@ -36,8 +36,8 @@ En este caso hemos de elegir la versión o versiones que queramos testear.
 ### Elección de versiones
 
 La imagen de Docker usa como base la imagen proporcionada por deno. Al no especificar la versión de la imagen base, nos usará la imagen con la última versión de Deno.
-Otra versión que se va a testear es la versión 1.36 . Vamos a usar esta versión porque es la mínima necesaria para que nos pueda funcionar. Incluye todas las herramientas
-de Deno que estamos usando. En específico, vamos a probar la versión: 1.36.4 que incluye corrección de algunos fallos. 
+Otra versión que se va a testear es la versión 1.37 . Vamos a usar esta versión porque es la mínima necesaria para que nos pueda funcionar. Incluye todas las herramientas
+de Deno que estamos usando. En específico, vamos a probar la versión: 1.37.2 que incluye corrección de algunos fallos. 
 
 # Pruebas
 
