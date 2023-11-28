@@ -4,3 +4,6 @@ automatizar:
   fichero: deno.json
   orden: deno task
 test: test/gestor_vehiculos_test.ts
+CI:
+  - .github/workflows/ci_test.yml
+  - .semaphore/semaphore.yml
