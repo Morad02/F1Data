@@ -12,35 +12,13 @@
 
 # Candidatos
 
-## Github Actions
 
-- *Servicio gratuito.* Sí.
-- *Integración con GitHub.* Sí.
-- *Integración con Docker.* Sí.
-- *Online* Sí.
-
-## Travis CI
-
-- *Servicio gratuito.* Sí.
-- *Integración con GitHub.* Sí.
-- *Integración con Docker.* Sí.
-- *Online* Sí. 
-
-## Semaphore CI
-
-- *Servicio gratuito.* No. (Solo una prueba de 14 días)
-- *Integración con GitHub.* Sí.
-- *Integración con Docker.* Sí.
-- *Online* Sí.
-
-## Azure Pipelines
-
-- *Servicio gratuito.* Sí.
-- *Integración con GitHub.* Sí.
-- *Integración con Docker.* Sí.
-- *Online* Sí.
-
-
+| CI Tool                                                                           | Servicio gratuito | Integración con GitHub | Integración con Docker | Online |
+|-----------------------------------------------------------------------------------|------------------|-----------------------|-----------------------|--------|
+| [Github Actions](https://github.com/features/actions)                             | Sí               | Sí                    | Sí                    | Sí     |
+| [Travis CI](https://www.travis-ci.com/)                                           | Sí               | Sí                    | Sí                    | Sí     |
+| [Semaphore CI](https://semaphoreci.com/)                                          | 14 días          | Sí                    | Sí                    | Sí     |
+| [Azure Pipelines](https://azure.microsoft.com/es-es/products/devops/pipelines/)   | Sí               | Sí                    | Sí                    | Sí     |
 
 
 # Maneras de probar el código
