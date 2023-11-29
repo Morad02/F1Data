@@ -47,6 +47,10 @@ No ha sido posible hacerlo funcionar. El problema es que azure ha cambiado su po
 
 Aunque ponga que no dispongamos de paralelismo para la ejecución, las tareas se ejecutan en secuencia, pero una secuencia en azure está documentada como un agente paralelo (creo que podría tener mejor nombre). Hace poco tiempo, azure ha desactivado los agentes paralelos para las nuevas cuentas gratuitas, y si queremos por lo menos un agente paralelo hemos de rellenar este [formulario](https://aka.ms/azpipelines-parallelism-request). Aunque lo he solicitado, no he recibido respuesta.
 
+> Nota: Hemos vuelto a mandar la solicitud y ha sido aceptada. Se ha configurado para que descargue la imagen que está en DockerHub y ejecute el contenedor.
+![azure](./azure_resolution.png)
+
+
 ## Github Actions
 
 Se ha configurado siguiendo la documentación ofrecida por Deno para [CI](https://docs.deno.com/runtime/manual/advanced/continuous_integration). En este caso, se ha optado por usar Deno con la versión decidida anteriormente. 
