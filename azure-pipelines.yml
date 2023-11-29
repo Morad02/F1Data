@@ -1,0 +1,14 @@
+trigger:
+- main
+
+resources:
+- repo: self
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    docker pull morad02/f1data
+    docker run -v `pwd`:/app/test morad02/f1data
+  displayName: 'Pull Docker image and run tests'
