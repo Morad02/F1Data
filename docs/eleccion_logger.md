@@ -29,3 +29,7 @@ Logger escrito en Typescript y se puede usar tanto en Deno como en Node. Es muy 
 
 Se ha decidido usar el logger que viene por defecto con Deno, ya que cumple con todos los criterios de decisión y es el que más soporte tiene.
 
+# Variables de entorno
+
+Las variables de entorno son un mecanismo que nos permite configurar nuestra aplicación sin tener que modificar el código fuente. Esto nos permite tener una mayor flexibilidad a la hora de configurar nuestra aplicación. En este caso, se van a usar para configurar el logger. 
+Deno ofrece ofrece dotenv, un módulo que nos permite cargar variables de entorno desde un fichero .env. Vamos a usar este módulo para cargar las variables de entorno.
