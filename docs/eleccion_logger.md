@@ -33,3 +33,4 @@ Se ha decidido usar el logger que viene por defecto con Deno, ya que cumple con 
 
 Las variables de entorno son un mecanismo que nos permite configurar nuestra aplicación sin tener que modificar el código fuente. Esto nos permite tener una mayor flexibilidad a la hora de configurar nuestra aplicación. En este caso, se van a usar para configurar el logger. 
 Deno ofrece ofrece dotenv, un módulo que nos permite cargar variables de entorno desde un fichero .env. Vamos a usar este módulo para cargar las variables de entorno.
+Usar dotenv nos permitirá almacenar información sensible o configuraciones específicas en un archivo separado del código fuente (.env)
