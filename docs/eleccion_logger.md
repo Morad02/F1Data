@@ -12,8 +12,8 @@ Para la búsqueda de un logger adecuado para nuestra aplicación, se han tenido 
 
 Para la elección del logger se han tenido en cuenta los siguientes criterios:
 
-- Que soporte el almacenamiento de logs en ficheros
 - Que esté mantenido
+- Que soporte el almacenamiento de logs en diferentes lugares
 
 ## Alternativas
 
@@ -29,8 +29,8 @@ Logger escrito en Typescript y se puede usar tanto en Deno como en Node. Es muy 
 
 Se ha decidido usar el logger que viene por defecto con Deno, ya que cumple con todos los criterios de decisión y es el que más soporte tiene.
 
-# Variables de entorno
+# Configuration management
 
-Las variables de entorno son un mecanismo que nos permite configurar nuestra aplicación sin tener que modificar el código fuente. Esto nos permite tener una mayor flexibilidad a la hora de configurar nuestra aplicación. En este caso, se van a usar para configurar el logger. 
-Deno ofrece ofrece dotenv, un módulo que nos permite cargar variables de entorno desde un fichero .env. Vamos a usar este módulo para cargar las variables de entorno.
-Usar dotenv nos permitirá almacenar información sensible o configuraciones específicas en un archivo separado del código fuente (.env)
+Deno ofrece dos formas de configurar el entorno de ejecución, a través de variables de entorno y de un archivo de configuración (usando dotenv). 
+Estas herramientas simplemente nos permiten gestionar variables y leerlas. Deno no tiene un sistema de configuración propio, y los módulos de terceros que lo implementan son escasos y no tienen apenas soporte. 
+Por ello, he decidido implementar una clase que nos permita gestionar la configuración de la aplicación. Esta clase contendrá las funcionalidades necesarias para este objetivo y a medida que se vayan necesitando nuevas funcionalidades se irán añadiendo.  
