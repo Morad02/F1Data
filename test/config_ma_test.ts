@@ -25,7 +25,7 @@ describe("Configuration Managment", () => {
     }
 
     beforeAll(()=>{
-        logConfig = config.getLogerConfig();
+        logConfig = config.getLoggerConfig();
     });
     
     it("Logger configuration", () => {

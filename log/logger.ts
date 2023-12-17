@@ -8,7 +8,7 @@ export class Logger{
     private constructor(){        
 
         const configMa = ConfigMa.instance();
-        const loggerConfig = configMa.getLogerConfig();
+        const loggerConfig = configMa.getLoggerConfig();
         const handler = loggerConfig.get("handler");
         let h;
 

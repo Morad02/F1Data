@@ -22,7 +22,7 @@ export class ConfigMa {
         return ConfigMa._instance;
     }
 
-    getLogerConfig(): Map<string, string>
+    getLoggerConfig(): Map<string, string>
     {
         const map = new Map<string, string>();
         
