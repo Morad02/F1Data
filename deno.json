@@ -9,7 +9,8 @@
         "bdd": "https://deno.land/std@0.204.0/testing/bdd.ts",
         "logger": "https://deno.land/std@0.208.0/log/mod.ts",
         "dotenv": "https://deno.land/std@0.209.0/dotenv/mod.ts",
-        "handlers": "https://deno.land/std@0.208.0/log/handlers.ts"
+        "handlers": "https://deno.land/std@0.208.0/log/handlers.ts",
+        "fs": "https://deno.land/std@0.209.0/fs/mod.ts"
     }
     
 }
