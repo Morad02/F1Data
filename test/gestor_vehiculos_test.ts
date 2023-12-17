@@ -1,10 +1,11 @@
 import {expect} from "chai";
-import  {describe, it} from "bdd";
+import  {beforeAll, describe, it} from "bdd";
 import { Vehiculo } from "../src/vehiculo.ts";
 import { Lote } from "../src/lote.ts";
 import { Pedido } from "../src/pedido.ts";
 import { GestorVehiculos} from "../src/gestor_vehiculos.ts"
 import { VehiculoAsignado } from "../src/vehiculo_asignado.ts";
+import { Logger } from "../log/logger.ts";
 
 describe("GestorVehiculos - Asignación de Pedidos", () => {
 
@@ -119,4 +120,62 @@ describe("GestorVehiculos - Asignación de Pedidos", () => {
         expect(esUnaAsignacionMinima([new Vehiculo(10, 20000, 100)], [new Lote(500, 5), new Lote(700, 7)], gestor7.vehiculosAsignados)).to.be.true;
         
     });
+});
+
+
+
+describe("Logger - Asignación de Pedidos", () => {
+    const logger = Logger.instance();
+    let logs: string[];
+
+    beforeAll(() => {
+        logs = logger.getLogins();
+        const regex = /^\[[A-Z]+\]\s/;
+        function quitarNivel(array: string[]): string[] {
+            return array.map((mensaje) => mensaje.replace(regex, ''));
+        }
+    
+        logs = quitarNivel(logs);
+    });
+
+    it("Número de logs", () => {
+        expect(logs.length).to.be.equal(7);
+    });
+
+    it("Log de Lotes pequeños y muchos vehículos disponibles", () => {
+        expect(logs[0]).to.be.equal("Pedido asignado correctamente");
+    });
+
+
+    it("Log de Vehículos pequeños y un lote grande", () => {
+        expect(logs[1]).to.be.equal("Pedido no asignado");
+    });
+
+
+    it("Log de Sin vehículos disponibles", () => {
+        expect(logs[1]).to.be.equal("Pedido no asignado");
+    });
+
+
+    it("Log de Pedido con muchos lotes y vehículos con capacidades suficientes", () => {
+        expect(logs[3]).to.be.equal("Pedido asignado correctamente");
+    });
+
+
+    it("Log de Pedido con un solo lote y varios vehículos disponibles", () => {
+        expect(logs[4]).to.be.equal("Pedido asignado correctamente");
+    });
+
+
+    it("Log de Pedido con múltiples lotes y solo un vehículo disponible", () => {
+        expect(logs[5]).to.be.equal("Pedido no asignado");
+    });
+
+
+    it("Log de Vehículos con capacidades extremadamente altas", () => {
+        expect(logs[6]).to.be.equal("Pedido asignado correctamente");
+    });
+
+    
+
 });
