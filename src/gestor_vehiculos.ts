@@ -25,13 +25,13 @@ export class GestorVehiculos{
         if(asignaciones.length > 0)
         {
             this.actualizarVehiculosDisponiblesYAsignados(asignaciones);
-            logger.info(`Pedido asignado correctamente`);
+            logger.info(`Pedido [${pedido.lotes.toString()}] asignado correctamente`);
             return true;
             
         }
         else
         {
-            logger.info(`Pedido no asignado`);
+            logger.info(`Pedido  [${pedido.lotes.toString()}] no asignado`);
             return false;
 
         }
