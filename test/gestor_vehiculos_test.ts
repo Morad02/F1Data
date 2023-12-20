@@ -130,12 +130,26 @@ describe("Logger - Asignación de Pedidos", () => {
 
     beforeAll(() => {
         logs = logger.getLogins();
-        const regex = /^\[[A-Z]+\]\s/;
+        const regexNivel = /^\[[A-Z]+\]\s/;
+        const regexInfo = /\[.*?\]/g;
+
         function quitarNivel(array: string[]): string[] {
-            return array.map((mensaje) => mensaje.replace(regex, ''));
+            return array.map((mensaje) => mensaje.replace(regexNivel, ''));
+        }
+
+        function quitarInfo(array: string[]): string[] {
+            return array.map((mensaje) => {
+                mensaje = mensaje.replace(regexInfo, '');
+        
+                // Eliminar los espacios dobles
+                mensaje = mensaje.replace(/\s{2,}/g, ' ');
+        
+                return mensaje;
+            });
         }
     
         logs = quitarNivel(logs);
+        logs = quitarInfo(logs);
     });
 
     it("Número de logs", () => {
