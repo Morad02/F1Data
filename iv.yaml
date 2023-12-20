@@ -8,4 +8,4 @@ CI:
   - .github/workflows/ci_test.yml
   - .semaphore/semaphore.yml
 configuracion:
-  - .env
+  - utilities/config_ma.ts
