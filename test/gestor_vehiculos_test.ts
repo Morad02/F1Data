@@ -133,23 +133,17 @@ describe("Logger - Asignación de Pedidos", () => {
         const regexNivel = /^\[[A-Z]+\]\s/;
         const regexInfo = /\[.*?\]/g;
 
-        function quitarNivel(array: string[]): string[] {
-            return array.map((mensaje) => mensaje.replace(regexNivel, ''));
-        }
-
-        function quitarInfo(array: string[]): string[] {
+        function limpiarLog(array: string[]): string[] {
             return array.map((mensaje) => {
-                mensaje = mensaje.replace(regexInfo, '');
-        
-                // Eliminar los espacios dobles
-                mensaje = mensaje.replace(/\s{2,}/g, ' ');
+                mensaje = mensaje.replace(regexNivel, ''); // Eliminar el nivel del log
+                mensaje = mensaje.replace(regexInfo, '');  //Eliminar info del pedido
+                mensaje = mensaje.replace(/\s{2,}/g, ' '); // Eliminar los espacios dobles
         
                 return mensaje;
             });
         }
     
-        logs = quitarNivel(logs);
-        logs = quitarInfo(logs);
+        logs = limpiarLog(logs);
     });
 
     it("Número de logs", () => {
