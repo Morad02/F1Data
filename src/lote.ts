@@ -17,4 +17,9 @@ export class Lote{
     {
         return this._volume
     }
+
+    toString():string
+    {
+        return `Peso: ${this._peso} Volumen: ${this._volume}`
+    }
 }

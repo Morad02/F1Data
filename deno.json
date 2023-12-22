@@ -2,11 +2,15 @@
 {
     "tasks": {
         "check": "deno check --all src/gestor_vehiculos.ts ",
-        "test": "deno test"
+        "test": "deno test --allow-read"
     },
     "imports": {
         "chai": "https://cdn.skypack.dev/chai@4.3.4?dts",
-        "bdd": "https://deno.land/std@0.204.0/testing/bdd.ts"
+        "bdd": "https://deno.land/std@0.204.0/testing/bdd.ts",
+        "logger": "https://deno.land/std@0.208.0/log/mod.ts",
+        "dotenv": "https://deno.land/std@0.209.0/dotenv/mod.ts",
+        "handlers": "https://deno.land/std@0.208.0/log/handlers.ts",
+        "fs": "https://deno.land/std@0.209.0/fs/mod.ts"
     }
     
 }

@@ -2,7 +2,9 @@ import { Pedido } from "./pedido.ts";
 import { Vehiculo } from "./vehiculo.ts";
 import { VehiculoAsignado } from "./vehiculo_asignado.ts";
 import { Lote } from "./lote.ts";
+import { Logger } from "../log/logger.ts";
 
+const logger =  Logger.instance().getLogger();
 
 export class GestorVehiculos{
     
@@ -23,10 +25,17 @@ export class GestorVehiculos{
         if(asignaciones.length > 0)
         {
             this.actualizarVehiculosDisponiblesYAsignados(asignaciones);
+            logger.info(`Pedido [${pedido.lotes.toString()}] asignado correctamente`);
             return true;
+            
         }
         else
+        {
+            logger.info(`Pedido  [${pedido.lotes.toString()}] no asignado`);
             return false;
+
+        }
+            
     }
 
     private asignarLotesAVehiculos(pedido: Pedido): VehiculoAsignado[] {
