@@ -9,3 +9,6 @@ CI:
   - .semaphore/semaphore.yml
 configuracion:
   - utilities/config_ma.ts
+
+framework:
+  - Deno.Serve
