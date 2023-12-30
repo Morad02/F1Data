@@ -12,22 +12,22 @@ export async function handler(_req: Request)
     }
 
     const routes = {
-        '/lote': {
+        '/lote/:id': {
             GET: async(id:string) => await getLote(id),
             POST: async(id:string,params:any) => await postLote(id,params),
             DELETE: async(id:string) => await deleteLote(id)
         },
-        '/vehiculo': {
+        '/vehiculo/:id': {
             GET: async(id:string) => await getVehiculo(id),
             POST: async(id:string,params:any) => await postVehiculo(id,params),
             DELETE: async(id:string) => await deleteVehiculo(id)
         },
-        '/pedido': {
+        '/pedido/:id': {
             GET: async(id:string) => await getPedido(id),
             POST: async(id:string,params:any) => await postPedido(id,params),
             DELETE: async(id:string) => await deletePedido(id)
         },
-        '/asignacion': {
+        '/asignacion/:id': {
             GET: async(id:string) => await getAsignacion(id),
             POST: async(id:string,params:any) => await postAsignacion(id,params),
             DELETE: async(id:string) => await deleteAsignacion(id)
