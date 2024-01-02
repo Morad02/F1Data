@@ -1,101 +1,100 @@
+import * as db from '../model/db.ts';
 
 export async function handler(_req: Request)
 {
     const {method} = _req;
     const url = new URL(_req.url);
-    const id = url.searchParams.get('id');
+    let id:string;
+    let params;
 
     if(method === 'POST')
     {
         const body = await _req.json();
-        const {params} = body.params;
+        params = body.params;
+        id = body.params.id || '';
+    }
+    else
+    {
+         id = url.searchParams.get('id') || '';
+
     }
 
-    const routes = {
-        '/lote/:id': {
-            GET: async(id:string) => await getLote(id),
+    const routes:any = {
+        '/lote': {
+            GET: async(id:string) => await db.default.getLote(id),
             POST: async(id:string,params:any) => await postLote(id,params),
-            DELETE: async(id:string) => await deleteLote(id)
+            DELETE: async(id:string) => await db.default.deleteLote(id)
         },
-        '/vehiculo/:id': {
-            GET: async(id:string) => await getVehiculo(id),
+        '/vehiculo': {
+            GET: async(id:string) => await db.default.getVehiculo(id),
             POST: async(id:string,params:any) => await postVehiculo(id,params),
-            DELETE: async(id:string) => await deleteVehiculo(id)
+            DELETE: async(id:string) => await db.default.deleteVehiculo(id)
         },
-        '/pedido/:id': {
-            GET: async(id:string) => await getPedido(id),
+        '/pedido': {
+            GET: async(id:string) => await db.default.getPedido(id),
             POST: async(id:string,params:any) => await postPedido(id,params),
-            DELETE: async(id:string) => await deletePedido(id)
+            DELETE: async(id:string) => await db.default.deletePedido(id)
         },
-        '/asignacion/:id': {
-            GET: async(id:string) => await getAsignacion(id),
+        '/asignacion': {
+            GET: async(id:string) => await db.default.getAsignacion(id),
             POST: async(id:string,params:any) => await postAsignacion(id,params),
-            DELETE: async(id:string) => await deleteAsignacion(id)
+            DELETE: async(id:string) => await db.default.deleteAsignacion(id)
         }
 
     }
+
+    if( routes[url.pathname] && id ) {
+        let responseData;
         
+        if (method === 'POST')
+        {
+            responseData = await routes[url.pathname]?.[method](id,params);
+            return respond( responseData, "UPDATE" );
+
+        } 
+        else
+        {
+            responseData = await routes[url.pathname]?.[method](id);
+            return respond( responseData, method );
+        }
+                 
+        
+    }
+    else if (routes[url.pathname] && params)
+    {
+        const responseData = await routes[url.pathname]?.[method]('',params);
+        return respond( responseData, "CREATE" );
+    }
+
+    
+    return respond(null,"ANY");
+
 
 }
 
-async function getLote(id:string)
-{
-    
+function respond(data:any, method:string)
+{   
 }
 
-async function getVehiculo(id:string)
-{
-    
-}
 
-async function getPedido(id:string)
-{
-    
-}
-
-async function getAsignacion(id:string)
-{
-    
-}
-
-async function postLote(id:string,params:any)
-{
-    
+async function postLote(id:string,params:any,)
+{   
+    return id !== '' ? await db.default.updateLote(id, params) : await db.default.createLote(params);
 }
 
 async function postVehiculo(id:string,params:any)
 {
-    
+    return id !== '' ? await db.default.updateVehiculo(id, params) : await db.default.createVehiculo(params);
 }
 
 async function postPedido(id:string,params:any)
 {
-    
+    return id !== '' ? await db.default.updatePedido(id, params) : await db.default.createPedido(params);  
 }
 
 async function postAsignacion(id:string,params:any)
 {
-    
-}
-
-async function deleteLote(id:string)
-{
-    
-}
-
-async function deleteVehiculo(id:string)
-{
-    
-}
-
-async function deletePedido(id:string)
-{
-    
-}
-
-async function deleteAsignacion(id:string)
-{
-    
+    return id !== '' ? await db.default.updateAsignacion(id, params) : await db.default.createAsignacion(params);
 }
 
 
