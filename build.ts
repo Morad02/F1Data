@@ -1,4 +1,4 @@
-import * as esbuild from "https://deno.land/x/esbuild@v0.15.5/mod.js";
+import * as esbuild from "esbuild";
 
 await esbuild.build({
     entryPoints: ['./src/gestor_vehiculos.ts'],
