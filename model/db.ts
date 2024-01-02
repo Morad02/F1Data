@@ -1,86 +1,194 @@
-export interface Lote {
+import {nanoid} from "nanoid"
+import { Kv } from "../test/db_test.ts";
+
+export interface Lote 
+{
     id: string;
     peso: number;
     volume: number;
 }
 
-export interface Vehiculo {
+export interface Vehiculo 
+{
     id: string;
     pesoMax: number;
     volumeMax: number;
-    lotes: string[];
 }
 
-export interface Pedido {
+export interface Pedido 
+{
     id: string;
     lotes: string[];
 }
 
-export interface Asignacion {
+export interface Asignacion 
+{
     id: string;
     vehiculo: string;
     lotes: string[];
 }
 
 
-export async function getLote(id:string)
+async function createItem<T>(type: string, params: any): Promise<{ item: T } | null> 
 {
-    
+    const id = nanoid();
+    const item: T = {
+        ...params,
+        id
+    } as T;
+
+    const res = await Kv.set([type, id], JSON.stringify(item));
+
+    if (res.ok) {
+        return { item};
+    } else {
+        return null;
+    }
 }
 
-export async function getVehiculo(id:string)
+
+async function getItem<T>(type: string, id: string): Promise<T | null> 
 {
-    
+    const res = await Kv.get([type, id]);
+
+    if (res !== null && typeof res.value === 'string') {
+        return JSON.parse(res.value) as T;
+    } else {
+        return null;
+    }
 }
 
-export async function getPedido(id:string)
+async function updateItem<T>(type: string, id: string, params: any): Promise<{ item: T } | null> 
 {
-    
+    const existingItem: T | null = await getItem<T>(type, id);
+
+    if  (await existingItem !== null) {
+        const updatedItem: T = {
+            ...existingItem,
+            ...params,
+            id //  ID se mantenga sin cambios
+        };
+        
+        const res = await Kv.set([type, id], JSON.stringify(updatedItem));
+
+        if (res.ok) {
+            return { item: updatedItem };
+        }
+    }
+
+    return null;
 }
 
-export async function getAsignacion(id:string)
+
+async function deleteItem(type: string, id: string): Promise<boolean> 
 {
-    
+    try {
+
+        await Kv.delete([type, id]);
+        return true; 
+
+    } catch (error) {   
+        return false; 
+    }
 }
 
-export async function updateLote(id:string,params:any)
+async function createLote(params: any) 
 {
-    
+    return await createItem<Lote>('lote', params);
 }
 
-export async function updateVehiculo(id:string,params = [])
+async function createVehiculo(params: any) 
 {
-    
+    return await createItem<Vehiculo>('vehiculo', params);
 }
 
-export async function updatePedido(id:string,params = [])
+async function createPedido(params: any) 
 {
-    
+    return await createItem<Pedido>('pedido', params);
 }
 
-export async function updateAsignacion(id:string,params = [])
+async function createAsignacion(params: any) 
 {
-    
+    return await createItem<Asignacion>('asignacion', params);
 }
 
-export async function deleteLote(id:string)
+ async function getLote(id:string)
 {
-    
+    return await getItem<Lote>('lote', id);
 }
 
-export async function deleteVehiculo(id:string)
+ async function getVehiculo(id:string)
 {
-    
+    return await getItem<Vehiculo>('vehiculo', id);
 }
 
-export async function deletePedido(id:string)
+ async function getPedido(id:string)
 {
-    
+    return await getItem<Pedido>('pedido', id);
 }
 
-export async function deleteAsignacion(id:string)
+ async function getAsignacion(id:string)
 {
-    
+    return await getItem<Asignacion>('asignacion', id);
 }
+
+async function updateLote(id: string, params: any) 
+{
+    return await updateItem<Lote>('lote', id, params);
+}
+
+async function updateVehiculo(id:string,params: any)
+{
+    return await updateItem<Vehiculo>('vehiculo', id, params);
+}
+
+async function updatePedido(id:string,params: any)
+{
+    return await updateItem<Pedido>('pedido', id, params);
+}
+
+async function updateAsignacion(id:string,params: any)
+{
+    return await updateItem<Asignacion>('asignacion', id, params);
+}
+
+async function deleteLote(id:string)
+{
+    return await deleteItem('lote',id);
+}
+
+async function deleteVehiculo(id:string)
+{
+    return await deleteItem('vehiculo',id);
+}
+
+async function deletePedido(id:string)
+{
+    return await deleteItem('pedido',id);
+}
+
+async function deleteAsignacion(id:string)
+{
+    return await deleteItem('asignacion',id);
+}
+
+export default{
+    createLote,
+    createVehiculo,
+    createPedido,
+    createAsignacion,
+    getLote,
+    getVehiculo,
+    getPedido,
+    getAsignacion,
+    updateLote,
+    updateVehiculo,
+    updatePedido,
+    updateAsignacion,
+    deleteLote,
+    deleteVehiculo,
+    deletePedido,
+    deleteAsignacion
+};
 
 
