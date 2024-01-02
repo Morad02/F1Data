@@ -2,7 +2,9 @@
 {
     "tasks": {
         "check": "deno check --all src/gestor_vehiculos.ts ",
-        "test": "deno test --allow-read --unstable --allow-net"
+        "test": "deno test --allow-read --unstable --allow-net",
+        "build":"",
+        "install": ""
     },
     "imports": {
         "chai": "https://cdn.skypack.dev/chai@4.3.4?dts",
