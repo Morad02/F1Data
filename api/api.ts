@@ -74,6 +74,39 @@ export async function handler(_req: Request)
 
 function respond(data:any, method:string)
 {   
+    let status = 200;
+
+    if (data == null || data == false)
+    {
+        data = {success: false};
+
+        if (method === 'GET' || method === 'DELETE' || method == 'UPDATE')
+            status = 404;
+        else if (method === 'CREATE' || method === 'ANY')
+            status = 400;
+
+    }
+    else
+    {
+        data = {success: true, data};
+
+        if (method === 'GET' || method === 'UPDATE')
+            status = 200;
+        else if (method === 'DELETE')
+        {
+            return new Response(null,{status: 204});
+
+        }      
+        else if (method === 'CREATE')
+            status = 201;
+    }
+
+    return new Response(JSON.stringify(data),{
+        status,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 }
 
 
