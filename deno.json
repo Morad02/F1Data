@@ -3,8 +3,8 @@
     "tasks": {
         "check": "deno check --all src/gestor_vehiculos.ts ",
         "test": "deno test --allow-read --unstable --allow-net",
-        "build":"",
-        "install": ""
+        "build":" deno run --allow-read --allow-net --allow-env --allow-run build.ts ",
+        "install": "deno install gestor_bundle.js"
     },
     "imports": {
         "chai": "https://cdn.skypack.dev/chai@4.3.4?dts",
@@ -13,7 +13,8 @@
         "dotenv": "https://deno.land/std@0.209.0/dotenv/mod.ts",
         "handlers": "https://deno.land/std@0.208.0/log/handlers.ts",
         "fs": "https://deno.land/std@0.209.0/fs/mod.ts",
-        "nanoid": "https://deno.land/x/nanoid/mod.ts"
+        "nanoid": "https://deno.land/x/nanoid/mod.ts",
+        "esbuild": "https://deno.land/x/esbuild@v0.19.11/mod.js"
     }
     
 }
