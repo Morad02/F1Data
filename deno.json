@@ -3,8 +3,8 @@
     "tasks": {
         "check": "deno check --all src/gestor_vehiculos.ts ",
         "test": "deno test --allow-read --unstable --allow-net",
-        "build":" deno run --allow-read --allow-net --allow-env --allow-run build.ts ",
-        "install": "deno install gestor_bundle.js"
+        "build":" deno eval '' ",
+        "install": "deno eval '' "
     },
     "imports": {
         "chai": "https://cdn.skypack.dev/chai@4.3.4?dts",
