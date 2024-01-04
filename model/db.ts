@@ -80,18 +80,6 @@ async function updateItem<T>(type: string, id: string, params: any): Promise<{ i
 }
 
 
-async function deleteItem(type: string, id: string): Promise<boolean> 
-{
-    try {
-
-        await Kv.delete([type, id]);
-        return true; 
-
-    } catch (error) {   
-        return false; 
-    }
-}
-
 async function createLote(params: any) 
 {
     return await createItem<Lote>('lote', params);
@@ -152,26 +140,6 @@ async function updateAsignacion(id:string,params: any)
     return await updateItem<Asignacion>('asignacion', id, params);
 }
 
-async function deleteLote(id:string)
-{
-    return await deleteItem('lote',id);
-}
-
-async function deleteVehiculo(id:string)
-{
-    return await deleteItem('vehiculo',id);
-}
-
-async function deletePedido(id:string)
-{
-    return await deleteItem('pedido',id);
-}
-
-async function deleteAsignacion(id:string)
-{
-    return await deleteItem('asignacion',id);
-}
-
 export default{
     createLote,
     createVehiculo,
@@ -184,11 +152,7 @@ export default{
     updateLote,
     updateVehiculo,
     updatePedido,
-    updateAsignacion,
-    deleteLote,
-    deleteVehiculo,
-    deletePedido,
-    deleteAsignacion
+    updateAsignacion
 };
 
 

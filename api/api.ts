@@ -23,22 +23,18 @@ export async function handler(_req: Request)
         '/lote': {
             GET: async(id:string) => await db.default.getLote(id),
             POST: async(id:string,params:any) => await postLote(id,params),
-            DELETE: async(id:string) => await db.default.deleteLote(id)
         },
         '/vehiculo': {
             GET: async(id:string) => await db.default.getVehiculo(id),
             POST: async(id:string,params:any) => await postVehiculo(id,params),
-            DELETE: async(id:string) => await db.default.deleteVehiculo(id)
         },
         '/pedido': {
             GET: async(id:string) => await db.default.getPedido(id),
             POST: async(id:string,params:any) => await postPedido(id,params),
-            DELETE: async(id:string) => await db.default.deletePedido(id)
         },
         '/asignacion': {
             GET: async(id:string) => await db.default.getAsignacion(id),
             POST: async(id:string,params:any) => await postAsignacion(id,params),
-            DELETE: async(id:string) => await db.default.deleteAsignacion(id)
         }
 
     }

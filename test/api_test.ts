@@ -109,43 +109,6 @@ describe("API", () => {
         expect(asignacion?.success).to.equal(true);
     });
 
-    it("Borrados", async () => {
-        lote = await fetch(`http://localhost:8080/lote?id=${lote?.data?.item?.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        vehiculo = await fetch(`http://localhost:8080/vehiculo?id=${vehiculo?.data?.item?.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        pedido = await fetch(`http://localhost:8080/pedido?id=${pedido?.data?.item?.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        asignacion = await fetch(`http://localhost:8080/asignacion?id=${asignacion?.data?.item?.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        expect(lote.status).to.equal(204);
-        expect(vehiculo.status).to.equal(204);
-        expect(pedido.status).to.equal(204);
-        expect(asignacion.status).to.equal(204);
-        
-    });
-
-
     afterAll( async () => {
         await conn.shutdown();
     });

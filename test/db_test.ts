@@ -45,14 +45,6 @@ describe("DB", () => {
         expect(await db.default.getAsignacion(asignacion?.item.id)).to.deep.equal(asignacion?.item);
         
     });
-
-    it("Borrados", async () => {
-        expect(await db.default.deleteLote(lote?.item.id)).to.equal(true);
-        expect(await db.default.deleteVehiculo(vehiculo?.item.id)).to.equal(true);
-        expect(await db.default.deletePedido(pedido?.item.id)).to.equal(true);
-        expect(await db.default.deleteAsignacion(asignacion?.item.id)).to.equal(true);
-        
-    });
 });
 
 
