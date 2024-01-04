@@ -22,19 +22,19 @@ export async function handler(_req: Request)
     const routes:any = {
         '/lote': {
             GET: async(id:string) => await db.default.getLote(id),
-            POST: async(id:string,params:object) => await postLote(id,params),
+            POST: async(id:string,params:object) =>  id !== '' ? await db.default.updateLote(id, params) : await db.default.createLote(params),
         },
         '/vehiculo': {
             GET: async(id:string) => await db.default.getVehiculo(id),
-            POST: async(id:string,params:object) => await postVehiculo(id,params),
+            POST: async(id:string,params:object) => id !== '' ? await db.default.updateVehiculo(id, params) : await db.default.createVehiculo(params),
         },
         '/pedido': {
             GET: async(id:string) => await db.default.getPedido(id),
-            POST: async(id:string,params:object) => await postPedido(id,params),
+            POST: async(id:string,params:object) => id !== '' ? await db.default.updatePedido(id, params) : await db.default.createPedido(params),
         },
         '/asignacion': {
             GET: async(id:string) => await db.default.getAsignacion(id),
-            POST: async(id:string,params:object) => await postAsignacion(id,params),
+            POST: async(id:string,params:object) => id !== '' ? await db.default.updateAsignacion(id, params) : await db.default.createAsignacion(params),
         }
 
     }
@@ -94,25 +94,6 @@ function getStatus(data:object|null, method:string, params:object):number
     return status;
 }
 
-async function postLote(id:string,params:object)
-{   
-    return id !== '' ? await db.default.updateLote(id, params) : await db.default.createLote(params);
-}
-
-async function postVehiculo(id:string,params:object)
-{
-    return id !== '' ? await db.default.updateVehiculo(id, params) : await db.default.createVehiculo(params);
-}
-
-async function postPedido(id:string,params:object)
-{
-    return id !== '' ? await db.default.updatePedido(id, params) : await db.default.createPedido(params);  
-}
-
-async function postAsignacion(id:string,params:object)
-{
-    return id !== '' ? await db.default.updateAsignacion(id, params) : await db.default.createAsignacion(params);
-}
 
 
 
