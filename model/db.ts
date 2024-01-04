@@ -1,5 +1,6 @@
 import {nanoid} from "nanoid"
-import { Kv } from "../test/db_test.ts";
+
+const Kv = await Deno.openKv();
 
 export interface Lote 
 {

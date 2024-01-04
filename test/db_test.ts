@@ -3,8 +3,6 @@ import  {beforeAll, describe, it} from "bdd";
 import * as db from '../model/db.ts';
 
 
-export const Kv = await Deno.openKv();
-
 describe("DB", () => {
     let lote:any, vehiculo:any, pedido:any, asignacion:any ;
 
