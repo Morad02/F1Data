@@ -5,7 +5,7 @@ export async function handler(_req: Request)
     const {method} = _req;
     const url = new URL(_req.url);
     let id:string;
-    let params;
+    let params:object = [];
 
     if(method === 'POST')
     {
@@ -22,19 +22,19 @@ export async function handler(_req: Request)
     const routes:any = {
         '/lote': {
             GET: async(id:string) => await db.default.getLote(id),
-            POST: async(id:string,params:any) => await postLote(id,params),
+            POST: async(id:string,params:object) => await postLote(id,params),
         },
         '/vehiculo': {
             GET: async(id:string) => await db.default.getVehiculo(id),
-            POST: async(id:string,params:any) => await postVehiculo(id,params),
+            POST: async(id:string,params:object) => await postVehiculo(id,params),
         },
         '/pedido': {
             GET: async(id:string) => await db.default.getPedido(id),
-            POST: async(id:string,params:any) => await postPedido(id,params),
+            POST: async(id:string,params:object) => await postPedido(id,params),
         },
         '/asignacion': {
             GET: async(id:string) => await db.default.getAsignacion(id),
-            POST: async(id:string,params:any) => await postAsignacion(id,params),
+            POST: async(id:string,params:object) => await postAsignacion(id,params),
         }
 
     }
@@ -68,11 +68,11 @@ export async function handler(_req: Request)
 
 }
 
-function respond(data:any, method:string, params:any)
+function respond(data:object|null, method:string, params:object)
 {   
     data = data == null ? {success: false} : {success: true, data};
 
-    let status = getStatus(data,method,params);
+    const status:number = getStatus(data,method,params);
 
     return new Response(JSON.stringify(data),{
         status,
@@ -82,7 +82,7 @@ function respond(data:any, method:string, params:any)
     });
 }
 
-function getStatus(data:any, method:string, params:any):number
+function getStatus(data:object|null, method:string, params:object):number
 {
     let status:number;
 
@@ -94,22 +94,22 @@ function getStatus(data:any, method:string, params:any):number
     return status;
 }
 
-async function postLote(id:string,params:any,)
+async function postLote(id:string,params:object)
 {   
     return id !== '' ? await db.default.updateLote(id, params) : await db.default.createLote(params);
 }
 
-async function postVehiculo(id:string,params:any)
+async function postVehiculo(id:string,params:object)
 {
     return id !== '' ? await db.default.updateVehiculo(id, params) : await db.default.createVehiculo(params);
 }
 
-async function postPedido(id:string,params:any)
+async function postPedido(id:string,params:object)
 {
     return id !== '' ? await db.default.updatePedido(id, params) : await db.default.createPedido(params);  
 }
 
-async function postAsignacion(id:string,params:any)
+async function postAsignacion(id:string,params:object)
 {
     return id !== '' ? await db.default.updateAsignacion(id, params) : await db.default.createAsignacion(params);
 }

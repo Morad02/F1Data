@@ -29,7 +29,7 @@ export interface Asignacion
 }
 
 
-async function createItem<T>(type: string, params: any): Promise<{ item: T } | null> 
+async function createItem<T>(type: string, params: object): Promise<{ item: T } | null> 
 {
     const id = nanoid();
     const item: T = {
@@ -58,11 +58,11 @@ async function getItem<T>(type: string, id: string): Promise<T | null>
     }
 }
 
-async function updateItem<T>(type: string, id: string, params: any): Promise<{ item: T } | null> 
+async function updateItem<T>(type: string, id: string, params: object): Promise<{ item: T } | null> 
 {
     const existingItem: T | null = await getItem<T>(type, id);
 
-    if  (await existingItem !== null) {
+    if  (existingItem !== null) {
         const updatedItem: T = {
             ...existingItem,
             ...params,
@@ -80,22 +80,22 @@ async function updateItem<T>(type: string, id: string, params: any): Promise<{ i
 }
 
 
-async function createLote(params: any) 
+async function createLote(params: object) 
 {
     return await createItem<Lote>('lote', params);
 }
 
-async function createVehiculo(params: any) 
+async function createVehiculo(params: object) 
 {
     return await createItem<Vehiculo>('vehiculo', params);
 }
 
-async function createPedido(params: any) 
+async function createPedido(params: object) 
 {
     return await createItem<Pedido>('pedido', params);
 }
 
-async function createAsignacion(params: any) 
+async function createAsignacion(params: object) 
 {
     return await createItem<Asignacion>('asignacion', params);
 }
@@ -120,22 +120,22 @@ async function createAsignacion(params: any)
     return await getItem<Asignacion>('asignacion', id);
 }
 
-async function updateLote(id: string, params: any) 
+async function updateLote(id: string, params: object) 
 {
     return await updateItem<Lote>('lote', id, params);
 }
 
-async function updateVehiculo(id:string,params: any)
+async function updateVehiculo(id:string,params: object)
 {
     return await updateItem<Vehiculo>('vehiculo', id, params);
 }
 
-async function updatePedido(id:string,params: any)
+async function updatePedido(id:string,params: object)
 {
     return await updateItem<Pedido>('pedido', id, params);
 }
 
-async function updateAsignacion(id:string,params: any)
+async function updateAsignacion(id:string,params: object)
 {
     return await updateItem<Asignacion>('asignacion', id, params);
 }
