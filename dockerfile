@@ -12,4 +12,4 @@ USER deno
 
 RUN deno cache --lock=deno.lock --reload --lock-write deno.json
 
-ENTRYPOINT ["deno", "test", "--allow-read", "test/gestor_vehiculos_test.ts"]
+ENTRYPOINT ["deno", "test", "--allow-read", "--unstable", "--allow-net" ,"test/gestor_vehiculos_test.ts", "test/config_ma_test.ts", "test/db_test.ts", "test/api_test.ts" ]
